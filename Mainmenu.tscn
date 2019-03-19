@@ -1,0 +1,100 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://normaltheme.tres" type="Theme" id=1]
+[ext_resource path="res://Roboto-Black.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Roboto-Black.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 78
+use_filter = true
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Button
+
+func pressed():
+	var _success = get_tree().change_scene(\"res://shooter_root.tscn\")
+	"
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends Button
+
+func pressed():
+	get_tree().quit()"
+
+[node name="Mainmenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 1145.0
+margin_bottom = 775.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
+margin_left = 431.0
+margin_top = 276.0
+margin_right = 708.0
+margin_bottom = 494.0
+custom_constants/separation = 13
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/CenterContainer/VBoxContainer"]
+margin_right = 277.0
+margin_bottom = 100.0
+custom_constants/separation = 16
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+margin_right = 100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+color = Color( 0, 0.0392157, 1, 1 )
+
+[node name="Label" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 116.0
+margin_top = 3.0
+margin_right = 277.0
+margin_bottom = 96.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_as_outline = 1
+text = "Run!"
+
+[node name="StartButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
+margin_top = 113.0
+margin_right = 277.0
+margin_bottom = 159.0
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color_hover = Color( 0.227451, 0.227451, 0.227451, 1 )
+text = "Start"
+script = SubResource( 4 )
+
+[node name="ExitButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
+margin_top = 172.0
+margin_right = 277.0
+margin_bottom = 218.0
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color_hover = Color( 0.227451, 0.227451, 0.227451, 1 )
+text = "Exit"
+script = SubResource( 5 )
+
